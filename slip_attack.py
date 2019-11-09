@@ -51,10 +51,10 @@ def discreteLogarithm(a, b, m):
 from Crypto.Util import number
 
 def genBase(size):
-    A = number.getRandomNBitInteger(size)
-    B = number.getRandomNBitInteger(size)
+    A = number.getPrime(size)
+    B = number.getPrime(size)
     while B == A:
-        B = number.getRandomNBitInteger(size)
+        B = number.getPrime(size)
     return A, B
 
 def keygen(size):
@@ -62,11 +62,7 @@ def keygen(size):
     sk = number.getRandomRange(1, (N - 1))
     return sk, N, M
 
-message = "Hi"
-msg = number.bytes_to_long(message)
-#msg = 13
-print msg
-size = 8
+size = 16
 print "Generating Alice and Bob's keys"
 skA, nA, MA = keygen(size)
 skB, nB, MB = keygen(size)
@@ -76,7 +72,6 @@ print skA, nA, MA
 print "Bob keys"
 print skB, nB, MB
 U = nA * nB
-UB = nA * nB * MB
 S = U * MA
 SB = U * MB
 print "Generating ephemeral public keys"
@@ -98,9 +93,9 @@ print p3, p3B
 p4 = pow(p3B, skA, p2)
 p4B = pow(p3, skB, p2B)
 print p4, p4B
-Osk = discreteLogarithm(y, p1, U)
-print Osk
-o1 = pow(p1B, Osk, U)
-print o1
-o2 = pow(p3B, Osk, o1)
-print o2
+#Osk = discreteLogarithm(y, p1, U)
+#print Osk
+#o1 = pow(p1B, Osk, U)
+#print o1
+#o2 = pow(yB, Osk, o1)
+#print o2
