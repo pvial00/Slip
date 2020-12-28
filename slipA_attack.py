@@ -85,22 +85,22 @@ yB = number.getRandomRange(1, (SB - 1))
 TkA = number.getRandomRange(1, (U - 1))
 TkB = number.getRandomRange(1, (U - 1))
 
-print y, yB
+print(y, yB)
 p1 = pow(y, TkA, S)
 p1B = pow(y, TkB, S)
-print "p1", p1, p1B
+print("p1", p1, p1B)
 p2 = pow(p1B, TkA, U)
 p2B = pow(p1, TkB, U)
-print p2, p2B
+print(p2, p2B)
 p3 = pow(yB, skA, p2)
 p3B = pow(yB, skB, p2B)
-print p3, p3B
+print(p3, p3B)
 p4 = pow(p3B, skA, p2)
 p4B = pow(p3, skB, p2B)
-print p4, p4B
+print(p4, p4B)
 Osk = discreteLogarithm(y, p1, U)
-print Osk
+print(Osk)
 o1 = pow(p1B, Osk, U)
-print o1
+print(o1)
 o2 = pow(p3B, Osk, o1)
-print o2
+print(o2)

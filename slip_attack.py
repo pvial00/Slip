@@ -63,36 +63,36 @@ def keygen(size):
     return sk, N, M
 
 size = 16
-print "Generating Alice and Bob's keys"
+print("Generating Alice and Bob's keys")
 skA, nA, MA = keygen(size)
 skB, nB, MB = keygen(size)
 
-print "Alice keys"
+print("Alice keys")
 print skA, nA, MA
-print "Bob keys"
-print skB, nB, MB
+print("Bob keys")
+print(skB, nB, MB)
 U = nA * nB
 S = U * MA
 SB = U * MB
-print "Generating ephemeral public keys"
+print("Generating ephemeral public keys")
 y = number.getRandomRange(1, (S - 1))
 yB = number.getRandomRange(1, (SB - 1))
 TkA = number.getRandomRange(1, (U - 1))
 TkB = number.getRandomRange(1, (U - 1))
 
-print y, yB
+print(y, yB)
 p1 = pow(y, TkA, S)
 p1B = pow(y, TkB, SB)
-print "p1", p1, p1B
+print("p1", p1, p1B)
 p2 = pow(p1B, TkA, U)
 p2B = pow(p1, TkB, U)
-print p2, p2B
+print(p2, p2B)
 p3 = pow(yB, skA, p2)
 p3B = pow(yB, skB, p2B)
-print p3, p3B
+print(p3, p3B)
 p4 = pow(p3B, skA, p2)
 p4B = pow(p3, skB, p2B)
-print p4, p4B
+print(p4, p4B)
 #Osk = discreteLogarithm(y, p1, U)
 #print Osk
 #o1 = pow(p1B, Osk, U)

@@ -69,18 +69,18 @@ U = nA * nB
 y = 36371949254935
 yB = 61102435573150
 
-print "Alice keys"
-print  nA, y
-print "Bob keys"
-print nB, yB
+print("Alice keys")
+print(nA, y)
+print("Bob keys")
+print(nB, yB)
 U = nA * nB
 p1A = 64411339244032
 p1B = 95801938861458
 p3A = 724057700
 p3B = 770567088
 Osk = discreteLogarithm(y, p1A, U)
-print Osk
+print(Osk)
 o1 = pow(p1B, Osk, U)
-print o1
+print(o1)
 o2 = pow(yB, Osk, o1)
 #print o2
